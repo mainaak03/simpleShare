@@ -18,14 +18,10 @@
     "postcss": "^8.4.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hot-toast": "^2.4.1",
     "react-qr-code": "^2.0.12",
     "react-router-dom": "^6.22.3",
-    "react-toastify": "^10.0.5",
-    "socket.io-client": "^4.7.4",
     "tailwindcss": "^3.4.1",
-    "unique-names-generator": "^4.7.1",
-    "webtorrent": "^2.1.37"
+    "unique-names-generator": "^4.7.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",

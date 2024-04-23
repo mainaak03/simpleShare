@@ -8,7 +8,7 @@ import { UserContext } from "../context/userContext";
 import QRCode from "react-qr-code";
 import { AnimatePresence, m, LazyMotion, domMax } from "framer-motion";
 
-const MainContainer: FC<MainContainerProps> = ({ roomId, handleConnectionNotif }) => {
+const MainContainer: FC<MainContainerProps> = ({ roomId }) => {
 
     const { username, peerRef, connRef } = useContext(UserContext) as userContextType;
 
@@ -37,7 +37,7 @@ const MainContainer: FC<MainContainerProps> = ({ roomId, handleConnectionNotif }
     };
 
     const handleLinkCopy = () => {
-        const url = import.meta.env.DEV?("http://localhost:5173"+peerId):(import.meta.env.VITE_DEPLOY_URL+peerId);
+        const url = import.meta.env.DEV?("http://localhost:5173/"+peerId):(import.meta.env.VITE_DEPLOY_URL+peerId);
         navigator.clipboard.writeText(url);
     };
 
@@ -52,7 +52,6 @@ const MainContainer: FC<MainContainerProps> = ({ roomId, handleConnectionNotif }
             setRemoteUsername(remoteUsername);
             conn.on("open", () => {
                 setConnected(true);
-                handleConnectionNotif(true);
                 let filename = "", filesize = 0, filetype = "", numChunks = 0;
                 let receivedChunks = 0;
                 let combinedChunks: Uint8Array[] = [];
@@ -116,7 +115,6 @@ const MainContainer: FC<MainContainerProps> = ({ roomId, handleConnectionNotif }
             });
             conn.on("close", () => {
                 setConnected(false);
-                handleConnectionNotif(false);
                 setReceiving(false);
                 setCount(0);
             });
@@ -188,7 +186,6 @@ const MainContainer: FC<MainContainerProps> = ({ roomId, handleConnectionNotif }
 
                 conn.on("open", () => {
                     setConnected(true);
-                    handleConnectionNotif(true);
                     let filename = "", filesize = 0, filetype = "", numChunks = 0;
                     let receivedChunks = 0;
                     let combinedChunks: Uint8Array[] = [];
@@ -251,7 +248,6 @@ const MainContainer: FC<MainContainerProps> = ({ roomId, handleConnectionNotif }
                 });
                 conn.on("close", () => {
                     setConnected(false);
-                    handleConnectionNotif(false);
                     setReceiving(false);
                     setCount(0);
                 });
@@ -300,7 +296,7 @@ const MainContainer: FC<MainContainerProps> = ({ roomId, handleConnectionNotif }
                                 <button className="flex flex-col justify-center items-center gap-2 max-w-36 m-2"
                                     onClick={() => handleLinkCopy()}>
                                     <p className="text-sm m-1 w-full text-center">Click to copy shareLink</p>
-                                    <QRCode value={import.meta.env.DEV?("http://localhost:5173"+peerId):(import.meta.env.VITE_DEPLOY_URL+peerId)} level="H" style={{ height: "auto", maxWidth: "100%", width: "100%" }} />
+                                    <QRCode value={import.meta.env.DEV?("http://localhost:5173/"+peerId):(import.meta.env.VITE_DEPLOY_URL+peerId)} level="H" style={{ height: "auto", maxWidth: "100%", width: "100%" }} />
                                     <p className="text-sm m-1 text-center">Scan the QR</p>
                                 </button>
                             </div>

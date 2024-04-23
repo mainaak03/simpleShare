@@ -2,7 +2,6 @@ import Peer, { DataConnection } from "peerjs";
 import { MutableRefObject } from "react";
 
 export type MainContainerProps = {
-    handleConnectionNotif: (connectionState:boolean) => void,
     roomId: string | undefined,
 };
 

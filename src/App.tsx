@@ -1,5 +1,4 @@
 import './App.css';
-import 'react-toastify/dist/ReactToastify.css';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 
