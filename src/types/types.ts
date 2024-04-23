@@ -1,18 +1,13 @@
-import Peer from "peerjs";
-
-export type peerType = {
-    socketId: string,
-    username: string,
-    userAvatar: string,
-};
+import Peer, { DataConnection } from "peerjs";
+import { MutableRefObject } from "react";
 
 export type MainContainerProps = {
-    handlePokeNotif: (senderUsername:string) => void,
     handleConnectionNotif: (connectionState:boolean) => void,
+    roomId: string | undefined,
 };
 
 export type userContextType = {
     username: string,
-    userAvatar: string,
-    peer: Peer,
+    peerRef: MutableRefObject<Peer | null>,
+    connRef: MutableRefObject<DataConnection | null>,
 };

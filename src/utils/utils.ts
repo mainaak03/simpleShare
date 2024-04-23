@@ -85,3 +85,12 @@ export const generateDummyFile = (sizeInBytes: number) => {
     const blob = new Blob([new Uint8Array(sizeInBytes)], {type: "application/octet-stream"});
     return new File([blob], "dummy"+sizeInBytes.toString());
 };
+
+export const extractRemoteUsername = (peerid: string) => {
+    const parts = peerid.split('_', 2);
+    if (parts.length === 2) {
+        return parts[1];
+    } else {
+        return "";
+    }
+}
