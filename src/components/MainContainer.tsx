@@ -37,7 +37,7 @@ const MainContainer: FC<MainContainerProps> = ({ roomId, handleConnectionNotif }
     };
 
     const handleLinkCopy = () => {
-        const url = import.meta.env.DEV?(import.meta.env.VITE_DEV_URL+peerId):(import.meta.env.VITE_DEPLOY_URL+peerId);
+        const url = import.meta.env.DEV?("http://localhost:5173"+peerId):(import.meta.env.VITE_DEPLOY_URL+peerId);
         navigator.clipboard.writeText(url);
     };
 
@@ -300,7 +300,7 @@ const MainContainer: FC<MainContainerProps> = ({ roomId, handleConnectionNotif }
                                 <button className="flex flex-col justify-center items-center gap-2 max-w-36 m-2"
                                     onClick={() => handleLinkCopy()}>
                                     <p className="text-sm m-1 w-full text-center">Click to copy shareLink</p>
-                                    <QRCode value={import.meta.env.DEV?(import.meta.env.VITE_DEV_URL+peerId):(import.meta.env.VITE_DEPLOY_URL+peerId)} level="H" style={{ height: "auto", maxWidth: "100%", width: "100%" }} />
+                                    <QRCode value={import.meta.env.DEV?("http://localhost:5173"+peerId):(import.meta.env.VITE_DEPLOY_URL+peerId)} level="H" style={{ height: "auto", maxWidth: "100%", width: "100%" }} />
                                     <p className="text-sm m-1 text-center">Scan the QR</p>
                                 </button>
                             </div>
